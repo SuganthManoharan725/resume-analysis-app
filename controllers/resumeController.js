@@ -1,4 +1,4 @@
-require("dotenv").config;
+require("dotenv").config();
 const pdf = require('pdf-parse');
 const axios = require('axios');
 const mongoose = require('mongoose');
@@ -7,9 +7,8 @@ const jwt = require('jsonwebtoken');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const SECRET_KEY = process.env.JWT_SECRET || '9s24g665r3wt5321';
 
-const GEMINI_API_KEY = 'AIzaSyBNHYJcord85shcwPAzsJ6BATmRv6EFL2E'; // Google Gemini API key
-const GEMINI_API_URL = "https://generativeai.googleapis.com/v1beta2/projects/gemini-2.0-flash-exp/locations/us-central1/models/gemini-2.0-flash-exp:generateText"; // Correct Gemini endpoint
-  
+const GEMINI_API_URL = process.env.GEMINI_API_URL;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 // Enrich resume data (enrichResumeData)
 const enrichResumeData = async (req, res) => {
   const token = req.headers['authorization']?.split(' ')[1];
